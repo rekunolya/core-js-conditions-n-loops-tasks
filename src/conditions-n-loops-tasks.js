@@ -71,8 +71,20 @@ function getMaxNumber(a, b, c) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  if (
+    Object.values(queen)[0] === Object.values(king)[0] ||
+    Object.values(queen)[1] === Object.values(king)[1]
+  ) {
+    return true;
+  }
+  if (
+    Math.abs(Object.values(queen)[0] - Object.values(king)[0]) ===
+    Math.abs(Object.values(queen)[1] - Object.values(king)[1])
+  ) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -114,8 +126,35 @@ function isIsoscelesTriangle(a, b, c) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let toRoman = '';
+  let numToRoman = num;
+  if (numToRoman >= 10) {
+    while (numToRoman >= 10) {
+      toRoman += 'X';
+      numToRoman -= 10;
+    }
+  }
+  if (numToRoman >= 9) {
+    toRoman += 'IX';
+    numToRoman -= 9;
+  }
+  if (numToRoman >= 5) {
+    toRoman += 'V';
+    numToRoman -= 5;
+  }
+
+  if (numToRoman >= 4) {
+    toRoman += 'IV';
+    numToRoman -= 4;
+  }
+
+  while (numToRoman >= 1) {
+    toRoman += 'I';
+    numToRoman -= 1;
+  }
+
+  return toRoman;
 }
 
 /**
@@ -133,8 +172,54 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let str = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    switch (numberStr[i]) {
+      case '1':
+        str += 'one';
+        break;
+      case '2':
+        str += 'two';
+        break;
+      case '3':
+        str += 'three';
+        break;
+      case '4':
+        str += 'four';
+        break;
+      case '5':
+        str += 'five';
+        break;
+      case '6':
+        str += 'six';
+        break;
+      case '7':
+        str += 'seven';
+        break;
+      case '8':
+        str += 'eight';
+        break;
+      case '9':
+        str += 'nine';
+        break;
+      case '0':
+        str += 'zero';
+        break;
+      case '-':
+        str += 'minus';
+        break;
+      case '.':
+      case ',':
+        str += 'point';
+        break;
+      default:
+    }
+    if (i !== numberStr.length - 1) {
+      str += ' ';
+    }
+  }
+  return str;
 }
 
 /**

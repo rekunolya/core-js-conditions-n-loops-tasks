@@ -234,8 +234,15 @@ function convertNumberToString(numberStr) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let string = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    string += str[i];
+  }
+  if (string === str) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -382,8 +389,24 @@ function sortByAsc(/* arr */) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  let string = str;
+  let i = 0;
+  while (i < iterations) {
+    let res = '';
+    let str1 = '';
+    for (let j = 0; j < string.length; j += 1) {
+      if (j % 2 === 0) {
+        res += string[j];
+      } else {
+        str1 += string[j];
+      }
+    }
+    res += str1;
+    string = res;
+    i += 1;
+  }
+  return string;
 }
 
 /**
